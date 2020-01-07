@@ -17,7 +17,7 @@ public class CategoriaResource {
 
 	@Autowired // Com a anotação Autowired, essa dependência automaticamente vai ser instânciada
 	// pelo spring, pelo mecanismo de injeção de dependência ou inversão de controle.
-	private CategoriaService CategoriaResource;
+	private CategoriaService CategoriaService;
 	
 	// O 'method = RequestMethod.GET)' para determinar qual o verbo da requisição.
 	// O 'value = "/{id}"' é pra demarcar que tem um parâmetro a ser passado.
@@ -27,7 +27,7 @@ public class CategoriaResource {
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET) 	
 	public ResponseEntity<?> find(@PathVariable Integer id) { // Esse ? é para definir que pode  ser qlqr tipo, pois pode encontrar ou não encontrar.
 			
-		Categoria categoria = this.CategoriaResource.buscar(id);
+		Categoria categoria = this.CategoriaService.buscar(id);
 
 		// Retorna o objeto especialista com códigos HTTPS resposta, etc, com no seu corpo o
 		// objeto categoria.
