@@ -15,6 +15,9 @@ import javax.persistence.ManyToMany;
 import org.hibernate.annotations.ManyToAny;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 public class Produto implements Serializable {
 
@@ -32,8 +35,14 @@ public class Produto implements Serializable {
 	@JoinTable(name = "PRODUTO_CATEGORIA", 
 	    joinColumns = @JoinColumn(name = "produto_id"), // Chave estrangeira dentro da classe produto.
 	    inverseJoinColumns = @JoinColumn(name = "categoria_id") // Chave estrangeira da categoria. 
-	) 
+	)
+	@JsonBackReference // Do outro da associação, já foram buscados os objetos (notação @JsonManagedReference na categoria), então ele omite 
+	// a lista de categorias para cada produto.
 	private List<Categoria> categorias = new ArrayList<>();
+
+	public Produto() {
+		
+	}
 	
 	public Produto(Integer id, String nome, Double preco) {
 		super();
