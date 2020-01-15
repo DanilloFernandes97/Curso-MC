@@ -50,6 +50,8 @@ public class CursomcApplication implements CommandLineRunner {
 		
 		this.produtoRepository.saveAll(Arrays.asList(produtoComputador, produtoImpressora, produtoMouse));
 		
+		// As associações (entidade PRODUTO_CATEGORIA será populada automaticamente.)
+		
 	}
 
 }

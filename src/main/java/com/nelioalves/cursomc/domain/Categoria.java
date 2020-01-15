@@ -30,7 +30,7 @@ public class Categoria implements Serializable {
 	// na classe produto.
 	@ManyToMany(mappedBy = "categorias") 
 	@JsonManagedReference // Resolvendo o problema da referência cíclica entre categoria e produtos na hora de serializar os objetos,
-	// se coloca essa notação para informar que será uma referência gerenciado pelo JSON.  
+	// se coloca essa notação para informar que será uma referência gerenciada pelo JSON.  
 	private List<Produto> produtos = new ArrayList<>();
 	
 	public Categoria() {

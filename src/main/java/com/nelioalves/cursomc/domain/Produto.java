@@ -36,8 +36,8 @@ public class Produto implements Serializable {
 	    joinColumns = @JoinColumn(name = "produto_id"), // Chave estrangeira dentro da classe produto.
 	    inverseJoinColumns = @JoinColumn(name = "categoria_id") // Chave estrangeira da categoria. 
 	)
-	@JsonBackReference // Do outro da associação, já foram buscados os objetos (notação @JsonManagedReference na categoria), então ele omite 
-	// a lista de categorias para cada produto.
+	@JsonBackReference // Do lado outro da associação, já foram buscados os objetos (notação @JsonManagedReference na categoria), então ele omite 
+	// a lista de categorias para cada produto na serialização.
 	private List<Categoria> categorias = new ArrayList<>();
 
 	public Produto() {

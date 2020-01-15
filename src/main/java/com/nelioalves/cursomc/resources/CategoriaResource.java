@@ -13,6 +13,8 @@ import com.nelioalves.cursomc.servicies.CategoriaService;
 
 @RestController // Notação do SpringBoot para demarcar classes controladoras de REST.
 @RequestMapping(value = "/categorias") // Notação do SpringBoot para demarcar o endpoint dessa classe.
+// As exceções não são tratadas diretamente aqui pois por convenção os métodos devem ser pequenos em controladores REST, por isso
+// existe os "handlers" que são objetos que capturam a excessão e lançam o código HTTP correto. 
 public class CategoriaResource {
 
 	@Autowired // Com a anotação Autowired, essa dependência automaticamente vai ser instânciada
