@@ -21,7 +21,7 @@ public class CategoriaResource {
 	// pelo spring, pelo mecanismo de injeção de dependência ou inversão de controle.
 	private CategoriaService CategoriaService;
 	
-	// O 'method = RequestMethod.GET)' para determinar qual o verbo da requisição.
+	// O 'method = RequestMethod.GET)' para determinar qual o verbo da requisição. @GetMapping, seria um atalho pra isso.
 	// O 'value = "/{id}"' é pra demarcar que tem um parâmetro a ser passado.
 	// Já o '@PathVariable' é para definir que o valor passado em {id} da URL vai nessa variável.
 	// O retorno ResponseEntity (especial do spring) é pelo fato dele já encapsular/armazenar 

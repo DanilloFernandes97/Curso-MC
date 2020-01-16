@@ -12,11 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
-import org.hibernate.annotations.ManyToAny;
-import org.springframework.web.bind.annotation.GetMapping;
-
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 public class Produto implements Serializable {

@@ -8,8 +8,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.nelioalves.cursomc.domain.Categoria;
+import com.nelioalves.cursomc.domain.Cidade;
+import com.nelioalves.cursomc.domain.Estado;
 import com.nelioalves.cursomc.domain.Produto;
 import com.nelioalves.cursomc.repositories.CategoriaRepository;
+import com.nelioalves.cursomc.repositories.CidadeRepository;
+import com.nelioalves.cursomc.repositories.EstadoRepository;
 import com.nelioalves.cursomc.repositories.ProdutoRepository;
 
 @SpringBootApplication
@@ -21,6 +25,12 @@ public class CursomcApplication implements CommandLineRunner {
 	
 	@Autowired // @Autowired: vai ser criado automaticamente. 
 	private ProdutoRepository produtoRepository;	
+	
+	@Autowired // @Autowired: vai ser criado automaticamente.
+	private EstadoRepository estadoRepository;
+	
+	@Autowired // @Autowired: vai ser criado automaticamente.
+	private CidadeRepository cidadeRepository;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(CursomcApplication.class, args);
@@ -44,13 +54,27 @@ public class CursomcApplication implements CommandLineRunner {
 		produtoComputador.getCategorias().addAll(Arrays.asList(categoriaInformatica));
 		produtoImpressora.getCategorias().addAll(Arrays.asList(categoriaInformatica, categoriaEscritorio));
 		produtoMouse.getCategorias().addAll(Arrays.asList(categoriaInformatica));
-		
+	
 		// Arrays.asList, cria um objeto array list e já itera eles com os objetos dos parâmetros.	
 		this.categoriaRepository.saveAll(Arrays.asList(categoriaInformatica, categoriaEscritorio));		
 		
 		this.produtoRepository.saveAll(Arrays.asList(produtoComputador, produtoImpressora, produtoMouse));
 		
 		// As associações (entidade PRODUTO_CATEGORIA será populada automaticamente.)
+		
+		Estado estadoMinasGerais = new Estado(null, "Minas Gerais");
+		Estado estadoSaoPaulo = new Estado(null, "São Paulo");
+		
+		Cidade cidadeUberlandia = new Cidade(null, "Uberlândia", estadoMinasGerais);
+		Cidade cidadeSaoPaulo = new Cidade(null, "São Paulo", estadoSaoPaulo);
+		Cidade cidadeCampinas = new Cidade(null, "Campinas", estadoSaoPaulo);
+		
+		estadoMinasGerais.getCidades().addAll(Arrays.asList(cidadeUberlandia));
+		
+		estadoSaoPaulo.getCidades().addAll( Arrays.asList(cidadeSaoPaulo, cidadeCampinas));
+	
+		this.estadoRepository.saveAll(Arrays.asList(estadoMinasGerais, estadoSaoPaulo));
+		this.cidadeRepository.saveAll(Arrays.asList(cidadeUberlandia, cidadeSaoPaulo, cidadeCampinas));
 		
 	}
 
