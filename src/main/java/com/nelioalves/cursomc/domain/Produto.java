@@ -26,7 +26,7 @@ public class Produto implements Serializable {
 	private Double Preco;
 	
 	@ManyToMany // Especifíca que a relação da lista categoria com o produto é muito pra muito.
-	// @JoinTable: Define que ela vai a tabela que vai fazer a tabela de muitos pra muitos (quem vai guardar o id dos dois lados).
+	// @JoinTable: Define que ela vai ser a tabela que vai fazer a tabela de muitos pra muitos (quem vai guardar o id dos dois lados).
 	// A entidade PRODUTO_CATEGORIA será criada automaticamente.
 	@JoinTable(name = "PRODUTO_CATEGORIA", 
 	    joinColumns = @JoinColumn(name = "produto_id"), // Chave estrangeira dentro da classe produto.

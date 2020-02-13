@@ -2,7 +2,7 @@ package com.nelioalves.cursomc.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import com.nelioalves.cursomc.domain.Produto;
+import com.nelioalves.cursomc.domain.Endereco;;
 
 // Repository (também conhecida como DAO)
 
@@ -10,7 +10,7 @@ import com.nelioalves.cursomc.domain.Produto;
 // você passar (no caso o objeto categoria) e o atributo identificador desse objeto.
 
 @Repository
-public interface ProdutoRepository extends JpaRepository<Produto, Integer> {
+public interface EnderecoRepository extends JpaRepository<Endereco, Integer> {
 
 	
 	
