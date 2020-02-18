@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 //Serializable é uma interface que diz que os objetos dessa classe podem ser convertidos em uma
 //sequência de bytes, para gravar os dados em arquivos, trafegar em redes, etc.
@@ -24,6 +25,7 @@ public class Estado implements Serializable {
 	
 	private String nome;
 
+	@JsonBackReference
 	@OneToMany(mappedBy = "estado") // Um pra muitos (Um estado para muitas cidades). O mappedBy informa qual atributo da outra classe
 	// que mapeou o @ManyToOne (o mapeamento reverso).
 	private List<Cidade> cidades = new ArrayList<Cidade>();

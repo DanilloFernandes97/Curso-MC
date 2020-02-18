@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 //Serializable é uma interface que diz que os objetos dessa classe podem ser convertidos em uma
 //sequência de bytes, para gravar os dados em arquivos, trafegar em redes, etc.
 
@@ -23,6 +25,7 @@ public class Cidade implements Serializable {
 	
 	private String nome;
 	
+	@JsonManagedReference
 	@ManyToOne // Informa o relacionamento Muitos pra Um (Muitas cidades pra um estado)
 	@JoinColumn(name = "estado_id") // Nome da chave estrangeira da entidade cidade.
 	private Estado estado;

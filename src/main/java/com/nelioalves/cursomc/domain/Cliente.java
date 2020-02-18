@@ -14,6 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.nelioalves.cursomc.domain.enums.TipoCliente;
 
 @Entity
@@ -29,6 +30,8 @@ public class Cliente implements Serializable {
 	private String cpfOuCnpj;
 	private Integer tipo;
 	
+	@JsonManagedReference// Resolvendo o problema da referência cíclica entre cliente e endereço na hora de serializar os objetos,
+	// se coloca essa notação para informar que será uma referência gerenciada pelo JSON.  
 	@OneToMany(mappedBy = "cliente") // O mappedBy é para indicar qual é o lado inverso ou não dominante da relação.
 	private List<Endereco> enderecos = new ArrayList<>();	
 

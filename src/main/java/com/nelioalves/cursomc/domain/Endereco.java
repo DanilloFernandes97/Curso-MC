@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 public class Endereco implements Serializable {
@@ -23,6 +24,8 @@ public class Endereco implements Serializable {
 	private String bairro;
 	private String cep;
 
+	@JsonBackReference  // Do lado outro da associação, já foram buscados os objetos (notação @JsonManagedReference no cliente), então ele omite 
+	// a lista de categorias para cada produto na serialização.
 	@ManyToOne // Um pra muitos (muitos clientes para um endereço) 
 	@JoinColumn(name = "cliente_id") // Nome da chave estrangeira da entidade Endereco.
 	private Cliente cliente;
